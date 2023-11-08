@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_THIETBI" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-FINT84M\SQLEXPRESS;Initial Catalog=QL_THIETBI;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QL_THIETBIConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BAIHOC" Member="BAIHOCs">
+    <Type Name="BAIHOC">
+      <Column Name="MABAI" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAMON" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="TENBAI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="BAIHOC_LICHHOC" Member="LICHHOCs" ThisKey="MABAI" OtherKey="MABAI" Type="LICHHOC" />
+      <Association Name="BAIHOC_PHIEUDSTHIETBITHEOLOP" Member="PHIEUDSTHIETBITHEOLOPs" ThisKey="MABAI" OtherKey="MABAI" Type="PHIEUDSTHIETBITHEOLOP" />
+      <Association Name="MONHOC_BAIHOC" Member="MONHOC" ThisKey="MAMON" OtherKey="MAMON" Type="MONHOC" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.THIETBI" Member="THIETBIs">
+    <Type Name="THIETBI">
+      <Column Name="MATB" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MALOAI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TENTB" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="GIA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="THIETBI_CHITIETPHIEUMUON" Member="CHITIETPHIEUMUONs" ThisKey="MATB" OtherKey="MATB" Type="CHITIETPHIEUMUON" />
+      <Association Name="THIETBI_CTPHEUXL" Member="CTPHEUXLs" ThisKey="MATB" OtherKey="MATB" Type="CTPHEUXL" />
+      <Association Name="THIETBI_CTPHIEUDAT" Member="CTPHIEUDATs" ThisKey="MATB" OtherKey="MATB" Type="CTPHIEUDAT" />
+      <Association Name="THIETBI_CTPHIEUHH" Member="CTPHIEUHHs" ThisKey="MATB" OtherKey="MATB" Type="CTPHIEUHH" />
+      <Association Name="THIETBI_CTPHIEUNGHIEMTHU" Member="CTPHIEUNGHIEMTHUs" ThisKey="MATB" OtherKey="MATB" Type="CTPHIEUNGHIEMTHU" />
+      <Association Name="THIETBI_CTPHIEUNHAP" Member="CTPHIEUNHAPs" ThisKey="MATB" OtherKey="MATB" Type="CTPHIEUNHAP" />
+      <Association Name="THIETBI_CTPHIEUTRA" Member="CTPHIEUTRAs" ThisKey="MATB" OtherKey="MATB" Type="CTPHIEUTRA" />
+      <Association Name="THIETBI_CTTHANHLY" Member="CTTHANHLies" ThisKey="MATB" OtherKey="MATB" Type="CTTHANHLY" />
+      <Association Name="THIETBI_CTTHIETBITHEOLOP" Member="CTTHIETBITHEOLOPs" ThisKey="MATB" OtherKey="MATB" Type="CTTHIETBITHEOLOP" />
+      <Association Name="LOAITHIETBI_THIETBI" Member="LOAITHIETBI" ThisKey="MALOAI" OtherKey="MALOAI" Type="LOAITHIETBI" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CHITIETPHIEUMUON" Member="CHITIETPHIEUMUONs">
+    <Type Name="CHITIETPHIEUMUON">
+      <Column Name="MAPHIEUMUON" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MATB" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="THIETBI_CHITIETPHIEUMUON" Member="THIETBI" ThisKey="MATB" OtherKey="MATB" Type="THIETBI" IsForeignKey="true" />
+      <Association Name="PHIEUMUON_CHITIETPHIEUMUON" Member="PHIEUMUON" ThisKey="MAPHIEUMUON" OtherKey="MAPHIEUMUON" Type="PHIEUMUON" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTDAY" Member="CTDAYs">
+    <Type Name="CTDAY">
+      <Column Name="MAGV" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAMON" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NAMHOC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="GIAOVIEN_CTDAY" Member="GIAOVIEN" ThisKey="MAGV" OtherKey="MAGV" Type="GIAOVIEN" IsForeignKey="true" />
+      <Association Name="MONHOC_CTDAY" Member="MONHOC" ThisKey="MAMON" OtherKey="MAMON" Type="MONHOC" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTPHEUXL" Member="CTPHEUXLs">
+    <Type Name="CTPHEUXL">
+      <Column Name="MAPHIEUXL" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MATB" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="HUONGXL" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="MUCDENBU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="THIETBI_CTPHEUXL" Member="THIETBI" ThisKey="MATB" OtherKey="MATB" Type="THIETBI" IsForeignKey="true" />
+      <Association Name="PHIEUXL_CTPHEUXL" Member="PHIEUXL" ThisKey="MAPHIEUXL" OtherKey="MAPHIEUXL" Type="PHIEUXL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTPHIEUDAT" Member="CTPHIEUDATs">
+    <Type Name="CTPHIEUDAT">
+      <Column Name="MATB" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAPHIEUDAT" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="THIETBI_CTPHIEUDAT" Member="THIETBI" ThisKey="MATB" OtherKey="MATB" Type="THIETBI" IsForeignKey="true" />
+      <Association Name="PHIEUDAT_CTPHIEUDAT" Member="PHIEUDAT" ThisKey="MAPHIEUDAT" OtherKey="MAPHIEUDAT" Type="PHIEUDAT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTPHIEUHH" Member="CTPHIEUHHs">
+    <Type Name="CTPHIEUHH">
+      <Column Name="ID_PHIEUGNHH" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MATB" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GHICHU" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="THIETBI_CTPHIEUHH" Member="THIETBI" ThisKey="MATB" OtherKey="MATB" Type="THIETBI" IsForeignKey="true" />
+      <Association Name="PHIEUGHINHANHUHONG_CTPHIEUHH" Member="PHIEUGHINHANHUHONG" ThisKey="ID_PHIEUGNHH" OtherKey="ID_PHIEUGNHH" Type="PHIEUGHINHANHUHONG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTPHIEUNGHIEMTHU" Member="CTPHIEUNGHIEMTHUs">
+    <Type Name="CTPHIEUNGHIEMTHU">
+      <Column Name="MATB" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAPHIEUNGHIEMTHU" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="THIETBI_CTPHIEUNGHIEMTHU" Member="THIETBI" ThisKey="MATB" OtherKey="MATB" Type="THIETBI" IsForeignKey="true" />
+      <Association Name="PHIEUNGHIEMTHU_CTPHIEUNGHIEMTHU" Member="PHIEUNGHIEMTHU" ThisKey="MAPHIEUNGHIEMTHU" OtherKey="MAPHIEUNGHIEMTHU" Type="PHIEUNGHIEMTHU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTPHIEUNHAP" Member="CTPHIEUNHAPs">
+    <Type Name="CTPHIEUNHAP">
+      <Column Name="MAPHIEUNHAP" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MATB" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="soluong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="THIETBI_CTPHIEUNHAP" Member="THIETBI" ThisKey="MATB" OtherKey="MATB" Type="THIETBI" IsForeignKey="true" />
+      <Association Name="PHIEUNHAP_CTPHIEUNHAP" Member="PHIEUNHAP" ThisKey="MAPHIEUNHAP" OtherKey="MAPHIEUNHAP" Type="PHIEUNHAP" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTPHIEUTRA" Member="CTPHIEUTRAs">
+    <Type Name="CTPHIEUTRA">
+      <Column Name="MAPHIEUTRA" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MATB" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="THIETBI_CTPHIEUTRA" Member="THIETBI" ThisKey="MATB" OtherKey="MATB" Type="THIETBI" IsForeignKey="true" />
+      <Association Name="PHIEUTRA_CTPHIEUTRA" Member="PHIEUTRA" ThisKey="MAPHIEUTRA" OtherKey="MAPHIEUTRA" Type="PHIEUTRA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTTHANHLY" Member="CTTHANHLies">
+    <Type Name="CTTHANHLY">
+      <Column Name="MAPHIEU" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MATB" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="HUONGTHANHLY" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TIENTHANHLY" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="THIETBI_CTTHANHLY" Member="THIETBI" ThisKey="MATB" OtherKey="MATB" Type="THIETBI" IsForeignKey="true" />
+      <Association Name="PHIEUTHANHLY_CTTHANHLY" Member="PHIEUTHANHLY" ThisKey="MAPHIEU" OtherKey="MAPHIEU" Type="PHIEUTHANHLY" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTTHIETBITHEOLOP" Member="CTTHIETBITHEOLOPs">
+    <Type Name="CTTHIETBITHEOLOP">
+      <Column Name="MAPHIEUDSTHIETBI" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MATB" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="THIETBI_CTTHIETBITHEOLOP" Member="THIETBI" ThisKey="MATB" OtherKey="MATB" Type="THIETBI" IsForeignKey="true" />
+      <Association Name="PHIEUDSTHIETBITHEOLOP_CTTHIETBITHEOLOP" Member="PHIEUDSTHIETBITHEOLOP" ThisKey="MAPHIEUDSTHIETBI" OtherKey="MAPHIEUDSTHIETBI" Type="PHIEUDSTHIETBITHEOLOP" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GIAOVIEN" Member="GIAOVIENs">
+    <Type Name="GIAOVIEN">
+      <Column Name="MAGV" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TEN" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="GT" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="PASSWORD" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="GIAOVIEN_CTDAY" Member="CTDAYs" ThisKey="MAGV" OtherKey="MAGV" Type="CTDAY" />
+      <Association Name="GIAOVIEN_PHIEUMUON" Member="PHIEUMUONs" ThisKey="MAGV" OtherKey="MAGV" Type="PHIEUMUON" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HOCSINH" Member="HOCSINHs">
+    <Type Name="HOCSINH">
+      <Column Name="ID_HOCSINH" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MALOP" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="TEN" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="GIOITINH" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="LOP_HOCSINH" Member="LOP" ThisKey="MALOP" OtherKey="MALOP" Type="LOP" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KHOILOP" Member="KHOILOPs">
+    <Type Name="KHOILOP">
+      <Column Name="ID_KHOI" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENKHOI" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="KHOILOP_LOP" Member="LOPs" ThisKey="ID_KHOI" OtherKey="ID_KHOI" Type="LOP" />
+      <Association Name="KHOILOP_MONHOC" Member="MONHOCs" ThisKey="ID_KHOI" OtherKey="ID_KHOI" Type="MONHOC" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LICHHOC" Member="LICHHOCs">
+    <Type Name="LICHHOC">
+      <Column Name="ID_LICH" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MALOP" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="MAPHONG" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="MABAI" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="MAPHIEUDSTHIETBI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NGAY" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GIOBATDAU" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GIOKETTHUC" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="LICHHOC_PHIEUNGHIEMTHU" Member="PHIEUNGHIEMTHUs" ThisKey="ID_LICH" OtherKey="ID_LICH" Type="PHIEUNGHIEMTHU" />
+      <Association Name="BAIHOC_LICHHOC" Member="BAIHOC" ThisKey="MABAI" OtherKey="MABAI" Type="BAIHOC" IsForeignKey="true" />
+      <Association Name="LOP_LICHHOC" Member="LOP" ThisKey="MALOP" OtherKey="MALOP" Type="LOP" IsForeignKey="true" />
+      <Association Name="PHIEUDSTHIETBITHEOLOP_LICHHOC" Member="PHIEUDSTHIETBITHEOLOP" ThisKey="MAPHIEUDSTHIETBI" OtherKey="MAPHIEUDSTHIETBI" Type="PHIEUDSTHIETBITHEOLOP" IsForeignKey="true" />
+      <Association Name="PHONG_LICHHOC" Member="PHONG" ThisKey="MAPHONG" OtherKey="MAPHONG" Type="PHONG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOAIPHONG" Member="LOAIPHONGs">
+    <Type Name="LOAIPHONG">
+      <Column Name="MALOAIPH" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENLOAI" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Association Name="LOAIPHONG_PHONG" Member="PHONGs" ThisKey="MALOAIPH" OtherKey="MALOAIPH" Type="PHONG" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOAITHIETBI" Member="LOAITHIETBIs">
+    <Type Name="LOAITHIETBI">
+      <Column Name="MALOAI" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENLOAI" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Association Name="LOAITHIETBI_THIETBI" Member="THIETBIs" ThisKey="MALOAI" OtherKey="MALOAI" Type="THIETBI" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOP" Member="LOPs">
+    <Type Name="LOP">
+      <Column Name="MALOP" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENLOP" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="SISO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_KHOI" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="LOP_HOCSINH" Member="HOCSINHs" ThisKey="MALOP" OtherKey="MALOP" Type="HOCSINH" />
+      <Association Name="LOP_LICHHOC" Member="LICHHOCs" ThisKey="MALOP" OtherKey="MALOP" Type="LICHHOC" />
+      <Association Name="LOP_PHIEUDSTHIETBITHEOLOP" Member="PHIEUDSTHIETBITHEOLOPs" ThisKey="MALOP" OtherKey="MALOP" Type="PHIEUDSTHIETBITHEOLOP" />
+      <Association Name="KHOILOP_LOP" Member="KHOILOP" ThisKey="ID_KHOI" OtherKey="ID_KHOI" Type="KHOILOP" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MONHOC" Member="MONHOCs">
+    <Type Name="MONHOC">
+      <Column Name="MAMON" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_KHOI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TENMON" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="MONHOC_BAIHOC" Member="BAIHOCs" ThisKey="MAMON" OtherKey="MAMON" Type="BAIHOC" />
+      <Association Name="MONHOC_CTDAY" Member="CTDAYs" ThisKey="MAMON" OtherKey="MAMON" Type="CTDAY" />
+      <Association Name="KHOILOP_MONHOC" Member="KHOILOP" ThisKey="ID_KHOI" OtherKey="ID_KHOI" Type="KHOILOP" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NHACUNGCAP" Member="NHACUNGCAPs">
+    <Type Name="NHACUNGCAP">
+      <Column Name="MANCC" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENNCC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="NHACUNGCAP_PHIEUDAT" Member="PHIEUDATs" ThisKey="MANCC" OtherKey="MANCC" Type="PHIEUDAT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NHANVIEN" Member="NHANVIENs">
+    <Type Name="NHANVIEN">
+      <Column Name="MANV" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENNV" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="NGAYSINH" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MATKHAU" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="QUYEN" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="NHANVIEN_PHIEUDAT" Member="PHIEUDATs" ThisKey="MANV" OtherKey="MANV" Type="PHIEUDAT" />
+      <Association Name="NHANVIEN_PHIEUDSTHIETBITHEOLOP" Member="PHIEUDSTHIETBITHEOLOPs" ThisKey="MANV" OtherKey="MANV" Type="PHIEUDSTHIETBITHEOLOP" />
+      <Association Name="NHANVIEN_PHIEUGHINHANHUHONG" Member="PHIEUGHINHANHUHONGs" ThisKey="MANV" OtherKey="MANV" Type="PHIEUGHINHANHUHONG" />
+      <Association Name="NHANVIEN_PHIEUNGHIEMTHU" Member="PHIEUNGHIEMTHUs" ThisKey="MANV" OtherKey="MANV" Type="PHIEUNGHIEMTHU" />
+      <Association Name="NHANVIEN_PHIEUNHAP" Member="PHIEUNHAPs" ThisKey="MANV" OtherKey="MANV" Type="PHIEUNHAP" />
+      <Association Name="NHANVIEN_PHIEUTHANHLY" Member="PHIEUTHANHLies" ThisKey="MANV" OtherKey="MANV" Type="PHIEUTHANHLY" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUDAT" Member="PHIEUDATs">
+    <Type Name="PHIEUDAT">
+      <Column Name="MAPHIEUDAT" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MANV" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="MANCC" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PHIEUDAT_CTPHIEUDAT" Member="CTPHIEUDATs" ThisKey="MAPHIEUDAT" OtherKey="MAPHIEUDAT" Type="CTPHIEUDAT" />
+      <Association Name="PHIEUDAT_PHIEUNHAP" Member="PHIEUNHAPs" ThisKey="MAPHIEUDAT" OtherKey="MAPHIEUDAT" Type="PHIEUNHAP" />
+      <Association Name="NHACUNGCAP_PHIEUDAT" Member="NHACUNGCAP" ThisKey="MANCC" OtherKey="MANCC" Type="NHACUNGCAP" IsForeignKey="true" />
+      <Association Name="NHANVIEN_PHIEUDAT" Member="NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUDSTHIETBITHEOLOP" Member="PHIEUDSTHIETBITHEOLOPs">
+    <Type Name="PHIEUDSTHIETBITHEOLOP">
+      <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MAPHIEUDSTHIETBI" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MANV" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="MABAI" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="MALOP" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Association Name="PHIEUDSTHIETBITHEOLOP_CTTHIETBITHEOLOP" Member="CTTHIETBITHEOLOPs" ThisKey="MAPHIEUDSTHIETBI" OtherKey="MAPHIEUDSTHIETBI" Type="CTTHIETBITHEOLOP" />
+      <Association Name="PHIEUDSTHIETBITHEOLOP_LICHHOC" Member="LICHHOCs" ThisKey="MAPHIEUDSTHIETBI" OtherKey="MAPHIEUDSTHIETBI" Type="LICHHOC" />
+      <Association Name="BAIHOC_PHIEUDSTHIETBITHEOLOP" Member="BAIHOC" ThisKey="MABAI" OtherKey="MABAI" Type="BAIHOC" IsForeignKey="true" />
+      <Association Name="LOP_PHIEUDSTHIETBITHEOLOP" Member="LOP" ThisKey="MALOP" OtherKey="MALOP" Type="LOP" IsForeignKey="true" />
+      <Association Name="NHANVIEN_PHIEUDSTHIETBITHEOLOP" Member="NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUGHINHANHUHONG" Member="PHIEUGHINHANHUHONGs">
+    <Type Name="PHIEUGHINHANHUHONG">
+      <Column Name="ID_PHIEUGNHH" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MANV" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PHIEUGHINHANHUHONG_CTPHIEUHH" Member="CTPHIEUHHs" ThisKey="ID_PHIEUGNHH" OtherKey="ID_PHIEUGNHH" Type="CTPHIEUHH" />
+      <Association Name="PHIEUGHINHANHUHONG_PHIEUTHANHLY" Member="PHIEUTHANHLies" ThisKey="ID_PHIEUGNHH" OtherKey="ID_PHIEUGNHH" Type="PHIEUTHANHLY" />
+      <Association Name="NHANVIEN_PHIEUGHINHANHUHONG" Member="NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUMUON" Member="PHIEUMUONs">
+    <Type Name="PHIEUMUON">
+      <Column Name="MAPHIEUMUON" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAGV" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="THOIGIANMUON" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="THOIGIANTRA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="PHIEUMUON_CHITIETPHIEUMUON" Member="CHITIETPHIEUMUONs" ThisKey="MAPHIEUMUON" OtherKey="MAPHIEUMUON" Type="CHITIETPHIEUMUON" />
+      <Association Name="PHIEUMUON_PHIEUTRA" Member="PHIEUTRAs" ThisKey="MAPHIEUMUON" OtherKey="MAPHIEUMUON" Type="PHIEUTRA" />
+      <Association Name="GIAOVIEN_PHIEUMUON" Member="GIAOVIEN" ThisKey="MAGV" OtherKey="MAGV" Type="GIAOVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUNGHIEMTHU" Member="PHIEUNGHIEMTHUs">
+    <Type Name="PHIEUNGHIEMTHU">
+      <Column Name="MAPHIEUNGHIEMTHU" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MANV" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="ID_LICH" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PHIEUNGHIEMTHU_CTPHIEUNGHIEMTHU" Member="CTPHIEUNGHIEMTHUs" ThisKey="MAPHIEUNGHIEMTHU" OtherKey="MAPHIEUNGHIEMTHU" Type="CTPHIEUNGHIEMTHU" />
+      <Association Name="LICHHOC_PHIEUNGHIEMTHU" Member="LICHHOC" ThisKey="ID_LICH" OtherKey="ID_LICH" Type="LICHHOC" IsForeignKey="true" />
+      <Association Name="NHANVIEN_PHIEUNGHIEMTHU" Member="NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUNHAP" Member="PHIEUNHAPs">
+    <Type Name="PHIEUNHAP">
+      <Column Name="MAPHIEUNHAP" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAPHIEUDAT" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="MANV" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TINHTRANG" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TONGTIEN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="PHIEUNHAP_CTPHIEUNHAP" Member="CTPHIEUNHAPs" ThisKey="MAPHIEUNHAP" OtherKey="MAPHIEUNHAP" Type="CTPHIEUNHAP" />
+      <Association Name="NHANVIEN_PHIEUNHAP" Member="NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="NHANVIEN" IsForeignKey="true" />
+      <Association Name="PHIEUDAT_PHIEUNHAP" Member="PHIEUDAT" ThisKey="MAPHIEUDAT" OtherKey="MAPHIEUDAT" Type="PHIEUDAT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUTHANHLY" Member="PHIEUTHANHLies">
+    <Type Name="PHIEUTHANHLY">
+      <Column Name="MAPHIEU" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MANV" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="ID_PHIEUGNHH" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GHICHU" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TONGTIEN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="PHIEUTHANHLY_CTTHANHLY" Member="CTTHANHLies" ThisKey="MAPHIEU" OtherKey="MAPHIEU" Type="CTTHANHLY" />
+      <Association Name="NHANVIEN_PHIEUTHANHLY" Member="NHANVIEN" ThisKey="MANV" OtherKey="MANV" Type="NHANVIEN" IsForeignKey="true" />
+      <Association Name="PHIEUGHINHANHUHONG_PHIEUTHANHLY" Member="PHIEUGHINHANHUHONG" ThisKey="ID_PHIEUGNHH" OtherKey="ID_PHIEUGNHH" Type="PHIEUGHINHANHUHONG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUTRA" Member="PHIEUTRAs">
+    <Type Name="PHIEUTRA">
+      <Column Name="MAPHIEUTRA" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAPHIEUMUON" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="PHIEUTRA_CTPHIEUTRA" Member="CTPHIEUTRAs" ThisKey="MAPHIEUTRA" OtherKey="MAPHIEUTRA" Type="CTPHIEUTRA" />
+      <Association Name="PHIEUTRA_PHIEUXL" Member="PHIEUXLs" ThisKey="MAPHIEUTRA" OtherKey="MAPHIEUTRA" Type="PHIEUXL" />
+      <Association Name="PHIEUMUON_PHIEUTRA" Member="PHIEUMUON" ThisKey="MAPHIEUMUON" OtherKey="MAPHIEUMUON" Type="PHIEUMUON" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUXL" Member="PHIEUXLs">
+    <Type Name="PHIEUXL">
+      <Column Name="MAPHIEUXL" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAPHIEUTRA" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TONGTIENDENBU" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="PHIEUXL_CTPHEUXL" Member="CTPHEUXLs" ThisKey="MAPHIEUXL" OtherKey="MAPHIEUXL" Type="CTPHEUXL" />
+      <Association Name="PHIEUTRA_PHIEUXL" Member="PHIEUTRA" ThisKey="MAPHIEUTRA" OtherKey="MAPHIEUTRA" Type="PHIEUTRA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHONG" Member="PHONGs">
+    <Type Name="PHONG">
+      <Column Name="MAPHONG" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MALOAIPH" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TENPHONG" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="PHONG_LICHHOC" Member="LICHHOCs" ThisKey="MAPHONG" OtherKey="MAPHONG" Type="LICHHOC" />
+      <Association Name="LOAIPHONG_PHONG" Member="LOAIPHONG" ThisKey="MALOAIPH" OtherKey="MALOAIPH" Type="LOAIPHONG" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
