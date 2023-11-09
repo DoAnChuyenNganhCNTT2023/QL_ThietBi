@@ -1,0 +1,92 @@
+/* Reset các giá trị mặc định của danh sách và đánh dấu bỏ viền */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Thiết lập các thuộc tính cho menu */
+.menu {
+    width: 200px; /* Điều chỉnh độ rộng của menu theo mong muốn */
+    background-color:whitesmoke; /* Màu nền menu */
+    color:black; /* Màu chữ trong menu */
+}
+
+/* Thiết lập các thuộc tính cho các mục trong menu */
+.menu ul li {
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+/* Tạo hiệu ứng hover khi rê chuột vào mục menu */
+.menu ul li:hover {
+    background-color: white;
+}
+
+/* Tạo hiệu ứng hover cho liên kết */
+.menu ul li a {
+    text-decoration: none;
+    color:black;
+    font-size: large;
+}
+
+/* Tạo hiệu ứng hover cho liên kết khi rê chuột vào */
+
+
+/* Ẩn menu con ban đầu */
+.submenu {
+    display: none;
+   
+}
+
+/* Hiển thị menu con khi mục cha được nhấn vào */
+.dropdown:hover .submenu {
+    display: block;
+}
+.user-info {
+  
+    align-items: center;
+}
+
+#userIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+#userIcon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+/* Thiết lập tên người dùng */
+.username {
+    font-weight: bold;
+}
+
+/* Thiết lập dropdown content (ẩn ban đầu) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Thiết lập các tùy chọn trong dropdown */
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Màu hover cho các tùy chọn trong dropdown */
+.dropdown-content a:hover {
+    background-color: #555;
+    color: #fff;
+}

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_THIETBI" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_THIETBI" Class="QL_THIETBIDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-FINT84M\SQLEXPRESS;Initial Catalog=QL_THIETBI;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QL_THIETBIConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BAIHOC" Member="BAIHOCs">
     <Type Name="BAIHOC">
