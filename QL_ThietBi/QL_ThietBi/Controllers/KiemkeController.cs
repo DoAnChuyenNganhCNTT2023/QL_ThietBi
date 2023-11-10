@@ -69,6 +69,9 @@ namespace QL_ThietBi.Controllers
             PHIEUGHINHANHUHONG ph = new PHIEUGHINHANHUHONG();
             ph.ID_PHIEUGNHH = maph;
             ph.NGAYLAP = d;
+            ph.MANV = "NV001";
+            dt.PHIEUGHINHANHUHONGs.InsertOnSubmit(ph);
+            dt.SubmitChanges();
 
             return RedirectToAction("KiemKe");
         }
