@@ -64,7 +64,13 @@ namespace QL_ThietBi.Controllers
         }
         public ActionResult Add_PhieuHH()
         {
-            return View();
+            DateTime d = DateTime.Now;
+            string maph = "PHH" + d.Year + d.Month + d.Day + d.Hour + d.Minute + d.Second;
+            PHIEUGHINHANHUHONG ph = new PHIEUGHINHANHUHONG();
+            ph.ID_PHIEUGNHH = maph;
+            ph.NGAYLAP = d;
+
+            return RedirectToAction("KiemKe");
         }
     }
 }

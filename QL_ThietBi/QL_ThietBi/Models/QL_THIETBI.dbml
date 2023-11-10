@@ -70,7 +70,7 @@
   </Table>
   <Table Name="dbo.CTPHIEUHH" Member="CTPHIEUHHs">
     <Type Name="CTPHIEUHH">
-      <Column Name="ID_PHIEUGNHH" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_PHIEUGNHH" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MATB" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="GHICHU" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
@@ -268,7 +268,7 @@
   </Table>
   <Table Name="dbo.PHIEUGHINHANHUHONG" Member="PHIEUGHINHANHUHONGs">
     <Type Name="PHIEUGHINHANHUHONG">
-      <Column Name="ID_PHIEUGNHH" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_PHIEUGNHH" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MANV" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
       <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="PHIEUGHINHANHUHONG_CTPHIEUHH" Member="CTPHIEUHHs" ThisKey="ID_PHIEUGNHH" OtherKey="ID_PHIEUGNHH" Type="CTPHIEUHH" />
@@ -316,7 +316,7 @@
     <Type Name="PHIEUTHANHLY">
       <Column Name="MAPHIEU" Type="System.String" DbType="VarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MANV" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="ID_PHIEUGNHH" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ID_PHIEUGNHH" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="GHICHU" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="TONGTIEN" Type="System.Double" DbType="Float" CanBeNull="true" />

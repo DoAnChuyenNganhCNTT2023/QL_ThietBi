@@ -185,11 +185,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Models\QL_THIETBI.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>QL_THIETBI.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Content\bootstrap-5.0.2-dist\css\bootstrap-grid.css.map" />
     <Content Include="Content\bootstrap-5.0.2-dist\css\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-5.0.2-dist\css\bootstrap-grid.rtl.css.map" />
@@ -212,6 +207,11 @@
     <Content Include="Content\bootstrap-5.0.2-dist\js\bootstrap.esm.min.js.map" />
     <Content Include="Content\bootstrap-5.0.2-dist\js\bootstrap.js.map" />
     <Content Include="Content\bootstrap-5.0.2-dist\js\bootstrap.min.js.map" />
+    <Content Include="Models\QL_THIETBI.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>QL_THIETBI.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Models\QL_THIETBI.dbml.layout">
       <DependentUpon>QL_THIETBI.dbml</DependentUpon>
     </None>
