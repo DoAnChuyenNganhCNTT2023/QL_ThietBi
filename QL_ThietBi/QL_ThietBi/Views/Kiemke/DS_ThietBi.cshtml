@@ -1,4 +1,5 @@
-﻿@model IEnumerable<QL_ThietBi.Models.THIETBI>
+﻿@model PagedList.IPagedList<QL_ThietBi.Models.THIETBI>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "DS_ThietBi";
     Layout = "~/Views/Shared/TrangChu.cshtml";
@@ -11,7 +12,7 @@
                 <li class="list-inline-item mb-0" style="border-bottom:3px solid green;background-color:white">
                     <a href="@Url.Action("Kiemke","DS_ThietBi")">Danh sách thiết bị</a>
                 </li>
-                <li class="list-inline-item mb-0" ><a href="@Url.Action("Kiemke","KiemKe")">Kiểm kê</a></li>
+                <li class="list-inline-item mb-0"><a href="@Url.Action("Kiemke","KiemKe")">Kiểm kê</a></li>
                 <li class="list-inline-item mb-0"><a href="#">Thanh lý</a></li>
 
             </ul>
@@ -27,33 +28,46 @@
                         <th>Số lượng</th>
                         <th>Giá</th>
                     </tr>
-                    
+
                 </thead>
-                
+                <tbody>
                     @foreach (var item in Model)
                     {
-            <tr>
+                        <tr>
 
 
-                <th>
-                    @item.MATB
-                </th>
-                <th>
-                    @item.TENTB
-                </th>
-                <th>
-                    @item.SOLUONG
-                </th>
-                <th>
-                    @item.GIA
-                </th>
-            </tr>
+                            <td>
+                                @item.MATB
+                            </td>
+                            <td>
+                                @item.TENTB
+                            </td>
+                            <td>
+                                @item.SOLUONG
+                            </td>
+                            <td>
+                                @string.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", item.GIA)
+                            </td>
+                        </tr>
                     }
-                
+                </tbody>
 
             </table>
         </div>
     </div>
 
 </div>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
+
+
+<div class="pagination">
+    @for (int i = 1; i <= Model.PageCount; i++)
+    {
+        var pageLink = new { page = i };
+        <a href="@Url.Action("DS_ThietBi", pageLink)" class="page-link @(i == Model.PageNumber ? "active" : "")">
+            @i
+        </a>
+    }
+</div>

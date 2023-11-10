@@ -46,6 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -164,9 +170,15 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Image\compass.png" />
+    <Content Include="Content\Image\delete.png" />
+    <Content Include="Content\Image\edit.png" />
+    <Content Include="Content\Image\file.png" />
     <Content Include="Content\Image\Logo.jpg" />
     <Content Include="Content\Image\management.png" />
     <Content Include="Content\Image\team.png" />
+    <Content Include="Content\Image\trash.png" />
+    <Content Include="Content\Image\updated.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -217,6 +229,7 @@
     <Content Include="Views\Kiemke\DS_ThietBi.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kiemke\KiemKe.cshtml" />
+    <Content Include="Views\Kiemke\CT_DSHuHong.cshtml" />
     <None Include="Views\Shared\DangNhap.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

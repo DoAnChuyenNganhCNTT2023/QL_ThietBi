@@ -1,7 +1,7 @@
-﻿@model PagedList.IPagedList<QL_ThietBi.Models.PHIEUGHINHANHUHONG>
+﻿@model PagedList.IPagedList<QL_ThietBi.Models.CTPHIEUHH>
 @using PagedList.Mvc;
 @{
-    ViewBag.Title = "KiemKe";
+    ViewBag.Title = "CT_DSHuHong";
     Layout = "~/Views/Shared/TrangChu.cshtml";
 }
 
@@ -19,21 +19,29 @@
         </div>
     </div>
     <div class="row m-3 text-center">
-        <h4 class="text-primary">DANH SÁCH PHIẾU GHI NHẬN HƯ HỎNG</h4>
-        <div class="container">
-           
-                <button type="submit" class="btn btn-primary ml-2 form-check-inline" style="float:right">Thêm mới</button>
-            
+        <h4 class="text-primary">DANH SÁCH THIẾT BỊ HƯ HỎNG</h4>
+       
+    </div>
+    <div class="row m-3" >
+        <div class="col-10">
+            <p><strong>Mã phiếu:</strong>@ViewBag.Ma</p>
 
         </div>
+      <div class="col-2">
+          <button type="submit" class="btn btn-primary w-100">Thêm</button>
+      </div>
+          
+        
+       
     </div>
     <div class="row">
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Mã phiếu</th>
-                    <th>Ngày lập</th>
-                    <th>Mã Nhân viên</th>
+                    <th>Tên thiết bị</th>
+                    <th>Số lượng</th>
+                    <th>Ghi Chú</th>
                     <th></th>
                 </tr>
             </thead>
@@ -45,12 +53,14 @@
                             @item.ID_PHIEUGNHH
                         </td>
                         <td>
-                            @item.NGAYLAP
+                            @item.THIETBI.TENTB
                         </td>
                         <td>
-                            @item.MANV
+                            <input type="number" id="adjustableNumber" value="@item.SOLUONG" min="0" max="100" >
+                           
                         </td>
-                        <td class="iconcrud"><a href="@Url.Action("CT_DSHuHong","Kiemke",new { ID=item.ID_PHIEUGNHH})"><img src="~/Content/Image/edit.png" /></a><a href="@Url.Action("","")"><img src="~/Content/Image/trash.png" /></a></td>
+                        <td>@item.GHICHU</td>
+                        <td class="iconcrud"><a href="@Url.Action("","")"><img src="~/Content/Image/updated.png" /></a><a href="@Url.Action("","")"><img src="~/Content/Image/trash.png" /></a></td>
                     </tr>
                 }
             </tbody>

@@ -91,3 +91,35 @@ ul {
     color: #fff;
     border-bottom:5px solid green;
 }
+.pagination {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .pagination .page-link {
+        color: #007BFF;
+        text-decoration: none;
+        padding: 5px 10px;
+        margin: 5px;
+        border: 1px solid #007BFF;
+        border-radius: 4px;
+        background-color: white;
+        transition: background-color 0.3s;
+    }
+
+        .pagination .page-link:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+    .pagination .active {
+        background-color: #007BFF;
+        color: white;
+    }
+.iconcrud img{
+    width:40px;
+    height:40px;
+    margin-right:10px;
+}

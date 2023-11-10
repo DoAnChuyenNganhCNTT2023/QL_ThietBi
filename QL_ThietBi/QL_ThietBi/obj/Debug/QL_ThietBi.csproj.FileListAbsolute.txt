@@ -72,7 +72,6 @@ D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\bin\System.Web.W
 D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\bin\Newtonsoft.Json.xml
 D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\bin\Antlr3.Runtime.pdb
 D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\obj\Debug\QL_ThietBi.csproj.AssemblyReference.cache
 D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\obj\Debug\QL_ThietBi.csproj.CoreCompileInputs.cache
 D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\obj\Debug\QL_ThietBi.csproj.CopyComplete
 D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\obj\Debug\QL_ThietBi.dll
@@ -156,3 +155,8 @@ D:\DoAnChuyenNganh\DoAnChuyenNganh\QL_ThietBi\QL_ThietBi\QL_ThietBi\obj\Debug\QL
 D:\DoAnChuyenNganh\DoAnChuyenNganh\QL_ThietBi\QL_ThietBi\QL_ThietBi\obj\Debug\QL_ThietBi.csproj.CopyComplete
 D:\DoAnChuyenNganh\DoAnChuyenNganh\QL_ThietBi\QL_ThietBi\QL_ThietBi\obj\Debug\QL_ThietBi.dll
 D:\DoAnChuyenNganh\DoAnChuyenNganh\QL_ThietBi\QL_ThietBi\QL_ThietBi\obj\Debug\QL_ThietBi.pdb
+D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\bin\PagedList.dll
+D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\bin\PagedList.Mvc.dll
+D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\bin\PagedList.xml
+D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\bin\PagedList.Mvc.xml
+D:\DoAnChuyenNganh\Branch_Thao\QL_ThietBi\QL_ThietBi\QL_ThietBi\obj\Debug\QL_ThietBi.csproj.AssemblyReference.cache
