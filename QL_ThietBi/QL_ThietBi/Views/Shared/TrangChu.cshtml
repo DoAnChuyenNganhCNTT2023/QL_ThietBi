@@ -34,8 +34,8 @@
 
     </header>
     <div class="container-fluid">
-        <div class="row m-5">
-            <div class="col-md-3">
+        <div class="row">
+            <div class="col-md-2">
                 <div class="menu">
                     <ul class="w-100 p-lg-0">
                         <li class="dropdown">
@@ -46,14 +46,14 @@
                                 <li><a href="#">Mục con 3</a></li>
                             </ul>
                         </li>
-                        <li><a href="#"><img style="width: 40px;height: 40px; filter: grayscale(100%);margin-right: 2px;" src="~/Content/Image/measuring-device.png">Thiết bị</a></li>
+                        <li><a href="@Url.Action("DS_ThietBi","Kiemke")"><img style="width: 40px;height: 40px; filter: grayscale(100%);margin-right: 2px;" src="~/Content/Image/measuring-device.png">Thiết bị</a></li>
                         <li><a href="#"><img style="width: 40px;height: 40px; filter: grayscale(100%);margin-right: 2px;" src="~/Content/Image/shopping-cart.png">Mua sắm</a></li>
                         <li><a href="#"><img style="width: 40px;height: 40px; filter: grayscale(100%);margin-right: 2px;" src="~/Content/Image/pie-chart.png">Thống kê</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-10 m-lg-0">
                 @RenderBody()
             </div>
 

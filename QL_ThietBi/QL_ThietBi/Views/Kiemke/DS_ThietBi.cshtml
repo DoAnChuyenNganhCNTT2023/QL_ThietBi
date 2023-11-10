@@ -1,0 +1,59 @@
+﻿@model IEnumerable<QL_ThietBi.Models.THIETBI>
+@{
+    ViewBag.Title = "DS_ThietBi";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="menu">
+            <ul class="w-100 p-lg-0 list-inline mb-0">
+                <li class="list-inline-item mb-0" style="border-bottom:3px solid green;background-color:white">
+                    <a href="@Url.Action("Kiemke","DS_ThietBi")">Danh sách thiết bị</a>
+                </li>
+                <li class="list-inline-item mb-0" ><a href="@Url.Action("Kiemke","KiemKe")">Kiểm kê</a></li>
+                <li class="list-inline-item mb-0"><a href="#">Thanh lý</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Mã thiết bị</th>
+                        <th>Tên thiết bị</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                    </tr>
+                    
+                </thead>
+                
+                    @foreach (var item in Model)
+                    {
+            <tr>
+
+
+                <th>
+                    @item.MATB
+                </th>
+                <th>
+                    @item.TENTB
+                </th>
+                <th>
+                    @item.SOLUONG
+                </th>
+                <th>
+                    @item.GIA
+                </th>
+            </tr>
+                    }
+                
+
+            </table>
+        </div>
+    </div>
+
+</div>
+

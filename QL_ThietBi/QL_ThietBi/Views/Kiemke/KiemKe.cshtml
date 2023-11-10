@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "KiemKe";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="menu">
+            <ul class="w-100 p-lg-0 list-inline mb-0">
+                <li class="list-inline-item mb-0">
+                    <a href="@Url.Action("DS_ThietBi","Kiemke")">Danh sách thiết bị</a>
+                </li>
+                <li class="list-inline-item mb-0"  style="border-bottom:3px solid green;background-color:white"><a href="@Url.Action("KiemKe","Kiemke")">Kiểm kê</a></li>
+                <li class="list-inline-item mb-0"><a href="#">Thanh lý</a></li>
+
+            </ul>
+        </div>
+        </div>
+    </div>
