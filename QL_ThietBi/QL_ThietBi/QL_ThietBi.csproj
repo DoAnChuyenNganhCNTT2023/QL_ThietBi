@@ -230,6 +230,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kiemke\KiemKe.cshtml" />
     <Content Include="Views\Kiemke\CT_DSHuHong.cshtml" />
+    <Content Include="Views\Kiemke\ThanhLy.cshtml" />
     <None Include="Views\Shared\DangNhap.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
