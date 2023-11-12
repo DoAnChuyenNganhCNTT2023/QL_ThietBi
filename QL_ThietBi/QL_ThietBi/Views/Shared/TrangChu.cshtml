@@ -23,7 +23,14 @@
             <div class="user-info" id="userDropdown">
 
                 <img src="~/Content/Image/user.png" alt="Biểu tượng người dùng" id="userIcon">
-                <span class="username">Tên người dùng</span>
+                @if (Session["TenGV"] != null)
+                {
+                    <span class="username">@Session["TenGV"]</span>
+                }
+                else
+                {
+                    <span class="username">@Session["TenNV"]</span>
+                }
                 <div class="dropdown-content" id="dropdownContent">
                     <a href="#">Đổi mật khẩu</a>
                     <a href="#">Đăng xuất</a>

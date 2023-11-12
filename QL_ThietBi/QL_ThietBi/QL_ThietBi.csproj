@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KiemkeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -231,6 +232,8 @@
     <Content Include="Views\Kiemke\KiemKe.cshtml" />
     <Content Include="Views\Kiemke\CT_DSHuHong.cshtml" />
     <Content Include="Views\Kiemke\ThanhLy.cshtml" />
+    <Content Include="Views\DangNhap\Login.cshtml" />
+    <Content Include="Views\DangNhap\LoginNV.cshtml" />
     <None Include="Views\Shared\DangNhap.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
