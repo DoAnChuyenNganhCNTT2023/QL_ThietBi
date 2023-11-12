@@ -10,6 +10,7 @@ namespace QL_ThietBi.Controllers
     {
         public ActionResult Index()
         {
+            
             return View();
         }
 
