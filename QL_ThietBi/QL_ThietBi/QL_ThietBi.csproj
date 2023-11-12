@@ -139,6 +139,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QL_THIETBI.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ThanhLy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,10 +173,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Image\compass.png" />
     <Content Include="Content\Image\delete.png" />
+    <Content Include="Content\Image\diskette.png" />
     <Content Include="Content\Image\edit.png" />
     <Content Include="Content\Image\file.png" />
     <Content Include="Content\Image\Logo.jpg" />
     <Content Include="Content\Image\management.png" />
+    <Content Include="Content\Image\printer.png" />
     <Content Include="Content\Image\team.png" />
     <Content Include="Content\Image\trash.png" />
     <Content Include="Content\Image\updated.png" />
@@ -231,9 +234,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kiemke\KiemKe.cshtml" />
     <Content Include="Views\Kiemke\CT_DSHuHong.cshtml" />
-    <Content Include="Views\Kiemke\ThanhLy.cshtml" />
     <Content Include="Views\DangNhap\Login.cshtml" />
     <Content Include="Views\DangNhap\LoginNV.cshtml" />
+    <Content Include="Views\Kiemke\ThanhLyTB.cshtml" />
     <None Include="Views\Shared\DangNhap.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

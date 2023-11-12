@@ -87,15 +87,47 @@ namespace QL_ThietBi.Controllers
 
             return RedirectToAction("KiemKe");
         }
-      
+      public void CapNhatSLKho(string Matb,string soluong)
+        {
+            THIETBI tb = (from t in dt.THIETBIs where t.MATB == Matb select t).FirstOrDefault();
+            try
+            {
+                tb.SOLUONG = tb.SOLUONG - int.Parse(soluong);
+                dt.SubmitChanges();
+            }
+            catch
+            {
+                ViewBag.Error = "Lỗi";
+            }
+        }
+        public void CapNhatSLKhoDelete(string Matb, string soluong)
+        {
+            THIETBI tb = (from t in dt.THIETBIs where t.MATB == Matb select t).FirstOrDefault();
+            try
+            {
+                tb.SOLUONG = tb.SOLUONG +int.Parse(soluong);
+                dt.SubmitChanges();
+            }
+            catch
+            {
+                ViewBag.Error = "Lỗi";
+            }
+        }
         public ActionResult Add_CTHH(string ID,string thietbi,string soluong,string ghichu)
         {
             CTPHIEUHH p = (from item in dt.CTPHIEUHHs where item.MATB == thietbi && item.ID_PHIEUGNHH == ID select item).FirstOrDefault();
             CTPHIEUHH ph = new CTPHIEUHH();
-            if (p == null)
+            THIETBI tb = (from t in dt.THIETBIs where t.MATB == thietbi select t).FirstOrDefault();
+         
+           if(tb.SOLUONG < int.Parse(soluong))
+            {
+                Session["Error"] = "Số lượng lớn hơn số lượng còn lại trong kho";
+            }
+            else if (p == null)
             {
                 try
                 {
+                    Session["Error"] = null;
                     ph.MATB = thietbi;
                     ph.SOLUONG = int.Parse(soluong);
                     ph.ID_PHIEUGNHH = ID;
@@ -103,40 +135,28 @@ namespace QL_ThietBi.Controllers
                     dt.CTPHIEUHHs.InsertOnSubmit(ph);
                     dt.SubmitChanges();
                 }
-                catch (SqlException ex)
+                catch
                 {
-                    // Bắt lỗi từ SQL Server
-                    foreach (SqlError error in ex.Errors)
-                    {
-                        if (error.Class == 16) // Class 16 thường là lỗi do người dùng
-                        {
-                            // Xử lý lỗi trigger
-                            string errorMessage = error.Message;
-
-                            // Hiển thị thông báo lỗi cho người dùng sử dụng mã JavaScript
-                            string script = $"alert('{errorMessage}');";
-                       //     ScriptManager.RegisterStartupScript(HttpContext.Current.Handler as Page, typeof(Page), "ServerControlScript", script, true);
-
-                            // Hoặc thực hiện các hành động khác
-                            // ...
-                        }
-                    }
+                    ViewBag.Error = "Không thành công";
                 }
-                catch (Exception ex)
-                {
-                    // Bắt lỗi chung
-                    // Xử lý lỗi hoặc hiển thị thông báo cho người dùng
-                    string errorMessage = ex.Message;
-                    string script = $"alert('{errorMessage}');";
-                  //  ScriptManager.RegisterStartupScript(HttpContext.Current.Handler as Page, typeof(Page), "ServerControlScript", script, true);
-                    // ...
-                }
+                //Update lại số lượng trong kho
+                CapNhatSLKho(thietbi, soluong);
+
             }
             else
             {
-                p.SOLUONG += int.Parse(soluong);
-               
-                dt.SubmitChanges();
+                try
+                {
+                    Session["Error"] = null;
+                    p.SOLUONG += int.Parse(soluong);
+
+                    dt.SubmitChanges();
+                }
+                catch
+                {
+                    ViewBag.Error = "Không thành công";
+                }
+                CapNhatSLKho(thietbi, soluong);
             }
             
             
@@ -155,36 +175,152 @@ namespace QL_ThietBi.Controllers
         public ActionResult Update_CTHH(string id,string thietbi,string soluong,string submitButton,string ghichu)
         {
             CTPHIEUHH ph = (from item in dt.CTPHIEUHHs where item.MATB == thietbi && item.ID_PHIEUGNHH == id select item).FirstOrDefault();
-            //ph.SOLUONG = int.Parse(soluong);
-            //dt.SubmitChanges();
+            THIETBI tb = (from t in dt.THIETBIs where t.MATB == thietbi select t).FirstOrDefault();
+            int sl;
+            int SOLUONG = int.Parse(soluong);
+            int soluonghtphieu = ph.SOLUONG.GetValueOrDefault();
+            int kq=0;
+            if (int.Parse(soluong)>ph.SOLUONG)
+            {
+                 sl = SOLUONG - soluonghtphieu;
+                 kq = tb.SOLUONG.GetValueOrDefault() + soluonghtphieu;
+
+                tb.SOLUONG = kq;
+                dt.SubmitChanges();
+            }   
+            else 
+            {
+                sl = soluonghtphieu - SOLUONG;
+                CapNhatSLKhoDelete(thietbi,sl.ToString());
+            }
+
             if (submitButton == "Update")
             {
                 // Xử lý cập nhật nhân viên
-                
-                if (ph != null)
+                if (tb.SOLUONG < int.Parse(soluong))
                 {
-                   ph.SOLUONG = int.Parse(soluong);
+                    Session["Error"] = "Số lượng lớn hơn số lượng còn lại trong kho";
+                }
+                else if (ph != null)
+                {
+                    Session["Error"] = null;
+                    ph.SOLUONG = int.Parse(soluong);
                     ph.GHICHU = ghichu;
                     dt.SubmitChanges();
+                    CapNhatSLKho(thietbi, (kq - sl).ToString());
                   
                 }
             }
             else if (submitButton == "Delete")
             {
-                // Xử lý xóa nhân viên
+                
           
                 if (ph != null)
                 {
+                    //cập nhật lại số lượng khi xóa
+                    CapNhatSLKhoDelete(thietbi, soluong);
                     dt.CTPHIEUHHs.DeleteOnSubmit(ph);
                     dt.SubmitChanges();
                 }
             }
             return RedirectToAction("CT_DSHuHong", new { id });
         }
-        public ActionResult ThanhLy()
+        public List<ThanhLy> laygiohang()
         {
-            return View();
+            List<ThanhLy> lstGH = Session["Giohang"] as List<ThanhLy>;
+            if (lstGH == null)
+            {
+                lstGH = new List<ThanhLy>();
+                Session["Giohang"] = lstGH;
+            }
+            return lstGH;
         }
-        
+        public ActionResult ThanhLyTB(string ID)
+        {
+            DateTime d = DateTime.Now;
+            string ma = "PTT" + Guid.NewGuid().ToString().Substring(0, 6);
+            
+
+                NHANVIEN NV = Session["userNV"] as NHANVIEN;
+                PHIEUTHANHLY tl = new PHIEUTHANHLY();
+                tl.MANV = NV.MANV;
+                tl.ID_PHIEUGNHH = ID;
+                tl.NGAYLAP = DateTime.Now;
+                tl.GHICHU = "";
+                tl.TONGTIEN = 0;
+                tl.TRANGTHAI = false;
+                tl.MAPHIEU = ma;
+                dt.PHIEUTHANHLies.InsertOnSubmit(tl);
+                dt.SubmitChanges();
+                var ds = from item in dt.CTPHIEUHHs
+                         join t in dt.THIETBIs on item.MATB equals t.MATB
+                         where item.ID_PHIEUGNHH == ID
+                         select new ThanhLy
+                         {
+                             MAPHIEU1 = ma,
+                             MATB1 = item.MATB,
+                             SOLUONG1 = item.SOLUONG.GetValueOrDefault(),
+                             HUONTHANHLY1 = "",
+                             TIENTHANHLY1 = 0,
+                             TINHTRANG1 = "Hỏng",
+                             ThietBi = new ThietBi
+                             {
+                                 //MATB = t.MATB,
+                                 TENTB = t.TENTB,
+                                 GIA = t.GIA.GetValueOrDefault()
+
+                             }
+                         };
+                List<ThanhLy> thanhly = ds.ToList<ThanhLy>();
+                ViewBag.MaPhieu = ma;
+
+                return View(thanhly);
+
+            //}
+            //else
+            //{
+            //    var dsd = from item in dt.CTPHEUXLs
+            //              join t in dt.THIETBIs on item.MATB equals t.MATB
+            //              where item.MAPHIEUXL==ma
+            //              select new ThanhLy
+            //              {
+            //                  MAPHIEU1 = ma,
+            //                  MATB1 = item.MATB,
+            //                  SOLUONG1 = item.SOLUONG.GetValueOrDefault(),
+            //                  HUONTHANHLY1 = "",
+            //                  TIENTHANHLY1 = 0,
+            //                  TINHTRANG1 = "Hỏng",
+            //                  ThietBi = new ThietBi
+            //                  {
+            //                      //MATB = t.MATB,
+            //                      TENTB = t.TENTB,
+            //                      GIA = t.GIA.GetValueOrDefault()
+
+            //                  }
+            //              };
+            //    return View(dsd);
+
+           // }
+
+           
+        }
+        public ActionResult Delete_PhieuHH(string ID)
+        {
+            PHIEUGHINHANHUHONG ph = (from item in dt.PHIEUGHINHANHUHONGs where item.ID_PHIEUGNHH==ID select item).FirstOrDefault();
+            try
+            {
+                dt.PHIEUGHINHANHUHONGs.DeleteOnSubmit(ph);
+               
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            dt.SubmitChanges();
+            return RedirectToAction("KiemKe");
+        }
+
+
+
     }
 }

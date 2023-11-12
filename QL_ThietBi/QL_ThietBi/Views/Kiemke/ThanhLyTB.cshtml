@@ -1,0 +1,84 @@
+﻿@model List<QL_ThietBi.Models.ThanhLy>
+@{
+    ViewBag.Title = "ThanhLyTB";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+
+<div class="container">
+    <div class="row m-3">
+       
+               
+            
+           
+        
+      
+        <div class="iconcrud d-flex justify-content-end">
+            <img src="~/Content/Image/printer.png"  class="m-3"/>
+            <img src="~/Content/Image/diskette.png" class="m-3"/>
+        </div>
+         
+      
+        
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Mã phiếu xử lý
+                    </th>
+                    <th>
+                        Tên thiết bị
+                    </th>
+                    <th>
+                        Số lượng
+                    </th>
+                    <th>
+                        Tình trạng
+                    </th>
+                    <th>
+                        Hướng xử lý
+                    </th>
+                    <th>
+                        Giá ban đầu
+                    </th>
+                    <th>
+                        Giá thanh lý
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr class="dshh">
+                    <td>
+                        @item.MAPHIEU1
+                    </td>
+                    <td>
+                        @item.ThietBi.TENTB
+                    </td>
+                    <td>
+                        @item.SOLUONG1
+                    </td>
+                    <td>
+                        @item.TINHTRANG1
+                    </td>
+                    <th>
+                        <select id="myComboBox" name="myComboBox">
+                            <option value="option1">Hủy</option>
+                            <option value="option2">Bán lại</option>
+
+                        </select>
+                    </th>
+                    <th>
+                        @string.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", item.ThietBi.GIA) 
+                    </th>
+                    <th>
+                        <input type="number" id="adjustableNumber" value="@item.ThietBi.GIA" name="gia">
+                    </th>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>
+

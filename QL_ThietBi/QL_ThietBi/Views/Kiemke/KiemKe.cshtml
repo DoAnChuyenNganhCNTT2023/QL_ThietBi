@@ -13,7 +13,7 @@
                     <a href="@Url.Action("DS_ThietBi","Kiemke")">Danh sách thiết bị</a>
                 </li>
                 <li class="list-inline-item mb-0" style="border-bottom:3px solid green;background-color:white"><a href="@Url.Action("KiemKe","Kiemke")">Kiểm kê</a></li>
-                <li class="list-inline-item mb-0"><a href="@Url.Action("ThanhLy","Kiemke")">Thanh lý</a></li>
+                @*<li class="list-inline-item mb-0"><a href="@Url.Action("ThanhLy","Kiemke")">Thanh lý</a></li>*@
 
             </ul>
         </div>
@@ -54,7 +54,10 @@
                         <td>
                             @item.MANV
                         </td>
-                        <td class="iconcrud"><a href="@Url.Action("CT_DSHuHong","Kiemke",new { ID=item.ID_PHIEUGNHH})"><img src="~/Content/Image/edit.png" /></a><a href="@Url.Action("","")"><img src="~/Content/Image/trash.png" /></a></td>
+                        <td class="iconcrud">
+                        <a href="@Url.Action("CT_DSHuHong","Kiemke",new { ID=item.ID_PHIEUGNHH})"><img src="~/Content/Image/edit.png" /></a>
+                        <a href="@Url.Action("Delete_PhieuHH","Kiemke",new { ID=item.ID_PHIEUGNHH})"><img src="~/Content/Image/trash.png" /></a>
+                        <a href="@Url.Action("ThanhLyTB","Kiemke",new {ID=item.ID_PHIEUGNHH })"><img src="~/Content/Image/money-management.png" /></a></td>
                     </tr>
                 }
             </tbody>
