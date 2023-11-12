@@ -70,14 +70,20 @@ namespace QL_ThietBi.Controllers
         }
         public ActionResult Add_PhieuHH()
         {
-            DateTime d = DateTime.Now;
-            string maph = "PHH" + d.Year + d.Month + d.Day + d.Hour + d.Minute + d.Second;
-            PHIEUGHINHANHUHONG ph = new PHIEUGHINHANHUHONG();
-            ph.ID_PHIEUGNHH = maph;
-            ph.NGAYLAP = d;
-            ph.MANV = "NV001";
-            dt.PHIEUGHINHANHUHONGs.InsertOnSubmit(ph);
-            dt.SubmitChanges();
+            if (Session["userNV"] != null)
+            {
+                NHANVIEN nv = Session["userNV"] as NHANVIEN;
+                string manv = nv.MANV;
+                DateTime d = DateTime.Now;
+                string maph = "PHH" + d.Year + d.Month + d.Day + d.Hour + d.Minute + d.Second;
+                PHIEUGHINHANHUHONG ph = new PHIEUGHINHANHUHONG();
+                ph.ID_PHIEUGNHH = maph;
+                ph.NGAYLAP = d;
+                ph.MANV = manv;
+                dt.PHIEUGHINHANHUHONGs.InsertOnSubmit(ph);
+                dt.SubmitChanges();
+            }
+           
 
             return RedirectToAction("KiemKe");
         }

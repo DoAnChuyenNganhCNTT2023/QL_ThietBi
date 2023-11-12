@@ -6,11 +6,16 @@
     <title>Quản lý thiết bị </title>
     <link href="~/Content/bootstrap-5.0.2-dist/css/MyCss.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-  
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript">
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
 
 
 </head>
@@ -33,7 +38,7 @@
                 }
                 <div class="dropdown-content" id="dropdownContent">
                     <a href="#">Đổi mật khẩu</a>
-                    <a href="#">Đăng xuất</a>
+                    <a href="@Url.Action("Logout","DangNhap")">Đăng xuất</a>
                 </div>
 
 
@@ -69,7 +74,7 @@
 
 
     </div>
-    </div>
+    
     <footer style="width:100%;height: 200px; background-color: rgb(12, 11, 40)">
         <div class="container p-5">
             <ul class="list-group text-center">
@@ -88,16 +93,16 @@
     <script src="~/Content/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.getElementById("userDropdown").addEventListener("click", function () {
-    var dropdownContent = document.getElementById("dropdownContent");
+            var dropdownContent = document.getElementById("dropdownContent");
 
-   
-    if (dropdownContent.style.display === "block") {
-        dropdownContent.style.display = "none";
-    } else {
-        dropdownContent.style.display = "block";
-    }
-});
+
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
     </script>
-
+  
 </body>
 </html>

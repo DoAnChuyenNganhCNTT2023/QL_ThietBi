@@ -43,12 +43,13 @@ namespace QL_ThietBi.Controllers
             Session["TenGV"] = user.TEN;
             Session["user"] = user;
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("DS_ThietBi", "Kiemke");
 
         }
         //đăng xuất
         public ActionResult Logout()
         {
+            NHANVIEN nv = Session["userNV"] as NHANVIEN;
             if (Session["user"] != null)
             {
                 Session.Remove("user");
@@ -57,9 +58,10 @@ namespace QL_ThietBi.Controllers
             else
             {
                 if (Session["userNV"] != null)
-
+                  
                     Session.Remove("userNV");
-                return RedirectToAction("LoginNV");
+           
+                return RedirectToAction("Index","Home");
             }
 
         }
@@ -92,7 +94,7 @@ namespace QL_ThietBi.Controllers
             Session["TenNV"] = user.TENNV;
             Session["userNV"] = user;
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("DS_ThietBi", "Kiemke");
         }
 
     }
