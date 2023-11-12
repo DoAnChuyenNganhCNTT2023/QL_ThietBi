@@ -74,7 +74,7 @@ body {
 	right: 0;	
 	border-radius: 32px;
 }
-/
+
 .screen__background__shape4 {
 	height: 400px;
 	width: 200px;
@@ -91,7 +91,10 @@ body {
 }
 
 .login__field {
-	padding: 10px 0px;	
+
+
+	padding: 20px 0px;	
+
 	position: relative;	
 }
 

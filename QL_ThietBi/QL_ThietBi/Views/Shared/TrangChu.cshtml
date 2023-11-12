@@ -7,10 +7,16 @@
     <title>Quản lý thiết bị </title>
     <link href="~/Content/bootstrap-5.0.2-dist/css/MyCss.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript">
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
 
 
 </head>
@@ -23,6 +29,7 @@
             <div class="user-info" id="userDropdown">
 
                 <img src="~/Content/Image/user.png" alt="Biểu tượng người dùng" id="userIcon">
+
                 @{
                     if (Session["TenNV"] != null)
                     {
@@ -34,9 +41,23 @@
                     }
                 }
                
+
                 <div class="dropdown-content" id="dropdownContent">
                     <a href="/DangNhap/ChangePass">Đổi mật khẩu</a>
                     <a href="/DangNhap/Logout">Đăng xuất</a>
+
+                @if (Session["TenGV"] != null)
+                {
+                    <span class="username">@Session["TenGV"]</span>
+                }
+                else
+                {
+                    <span class="username">@Session["TenNV"]</span>
+                }
+                <div class="dropdown-content" id="dropdownContent">
+                    <a href="#">Đổi mật khẩu</a>
+                    <a href="@Url.Action("Logout","DangNhap")">Đăng xuất</a>
+
                 </div>
 
 
@@ -101,6 +122,6 @@
             }
         });
     </script>
-
+  
 </body>
 </html>
