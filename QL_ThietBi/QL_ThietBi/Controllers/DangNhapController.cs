@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 using System.Diagnostics;
+
 
 
 namespace QL_ThietBi.Controllers
@@ -25,7 +27,8 @@ namespace QL_ThietBi.Controllers
         [HttpPost]
         public ActionResult Login(string username, string pass)
         {
-            if(string.IsNullOrEmpty(username)==true| string.IsNullOrEmpty(pass) == true)
+
+            if (string.IsNullOrEmpty(username) == true | string.IsNullOrEmpty(pass) == true)
             {
                 ViewBag.erro = "Chưa Nhập Tài Khoản và Mật Khẩu!";
                 return View();
@@ -45,23 +48,32 @@ namespace QL_ThietBi.Controllers
             Session["TenGV"] = user.TEN;
             Session["user"] = user;
 
-            return RedirectToAction("Index","Home");
+
             
+
+            return RedirectToAction("DS_ThietBi", "Kiemke");
+
+
         }
         //đăng xuất
         public ActionResult Logout()
         {
+
+            NHANVIEN nv = Session["userNV"] as NHANVIEN;
             if (Session["user"] != null)
             {
                 Session.Remove("user");
-                return RedirectToAction("Index", "DangNhap");
-            } else{
-                if(Session["userNV"] != null)
-            
-                Session.Remove("userNV");
-                return RedirectToAction("Index","DangNhap");
+                return RedirectToAction("Login");
             }
+            else
+            {
+                if (Session["userNV"] != null)
+                  
+                    Session.Remove("userNV");
            
+                return RedirectToAction("Index","Home");
+            }
+
         }
         public ActionResult LoginNV()
         {
@@ -71,7 +83,8 @@ namespace QL_ThietBi.Controllers
         [HttpPost]
         public ActionResult LoginNV(string Email, string password)
         {
-            
+
+
             if (string.IsNullOrEmpty(Email) == true | string.IsNullOrEmpty(password) == true)
             {
                 ViewBag.erro = "Chưa Nhập Tài Khoản và Mật Khẩu!";
@@ -91,7 +104,7 @@ namespace QL_ThietBi.Controllers
             }
             Session["TenNV"] = user.TENNV;
             Session["userNV"] = user;
-           
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -156,10 +169,13 @@ namespace QL_ThietBi.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View();
+     
+
+
+
+
+            return RedirectToAction("DS_ThietBi", "Kiemke");
         }
-
-
 
     }
 }

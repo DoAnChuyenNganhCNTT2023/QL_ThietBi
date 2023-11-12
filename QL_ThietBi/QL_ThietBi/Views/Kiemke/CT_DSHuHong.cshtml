@@ -13,26 +13,28 @@
                     <a href="@Url.Action("DS_ThietBi","Kiemke")">Danh sách thiết bị</a>
                 </li>
                 <li class="list-inline-item mb-0" style="border-bottom:3px solid green;background-color:white"><a href="@Url.Action("KiemKe","Kiemke")">Kiểm kê</a></li>
-                <li class="list-inline-item mb-0"><a href="#">Thanh lý</a></li>
+                <li class="list-inline-item mb-0"><a href="@Url.Action("ThanhLy","Kiemke")">Thanh lý</a></li>
 
             </ul>
         </div>
     </div>
     <div class="row m-3 text-center">
         <h4 class="text-primary">DANH SÁCH THIẾT BỊ HƯ HỎNG</h4>
-       
+
     </div>
-    <div class="row m-3" >
+    <div class="row m-3">
         <div class="col-10">
             <p><strong>Mã phiếu:</strong>@ViewBag.Ma</p>
 
         </div>
-      <div class="col-2">
-          <button type="submit" class="btn btn-primary w-100">Thêm</button>
-      </div>
-          
-        
-       
+        <div class="col-2">
+            <button id="registerButton" type="submit" class="btn btn-primary w-100">Thêm</button>
+
+            <div id="overlay"></div>
+        </div>
+
+
+
     </div>
     <div class="row">
         <table class="table table-bordered">
@@ -47,25 +49,72 @@
             </thead>
             <tbody>
                 @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @item.ID_PHIEUGNHH
-                        </td>
-                        <td>
-                            @item.THIETBI.TENTB
-                        </td>
-                        <td>
-                            <input type="number" id="adjustableNumber" value="@item.SOLUONG" min="0" max="100" >
-                           
-                        </td>
-                        <td>@item.GHICHU</td>
-                        <td class="iconcrud"><a href="@Url.Action("","")"><img src="~/Content/Image/updated.png" /></a><a href="@Url.Action("","")"><img src="~/Content/Image/trash.png" /></a></td>
-                    </tr>
-                }
+        {
+            using (Html.BeginForm("Update_CTHH", "Kiemke", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+
+
+
+            <tr class="dshh">
+                <td>
+                    <input type="text" value=" @item.ID_PHIEUGNHH" name="id" readonly style="border:none;outline:none">
+                </td>
+                <td name="thietbi">
+                    <input type="hidden"  name="thietbi" value="@item.THIETBI.MATB">
+                    <input type="text" value=" @item.THIETBI.TENTB" name="thietbfi" readonly style="border:none;outline:none">
+                </td>
+                <td>
+                    <input type="number" id="adjustableNumber" value="@item.SOLUONG" min="0" max="100" name="soluong">
+
+                </td>
+                <td>   <input type="text" value=" @item.GHICHU" name="ghichu" style="border:none;outline:none"></td>
+                <td class="iconcrud">@*<a href="@Url.Action("Update_CTHH", "Kiemke", new { id = item.ID_PHIEUGNHH, thietbi = item.MATB })"><img src="~/Content/Image/updated.png" /></a>
+                <a href="@Url.Action("Delete_CTHH", "Kiemke", new { id = item.ID_PHIEUGNHH, thietbi = item.MATB })"><img src="~/Content/Image/trash.png" /></a>
+                <button type="submit" class="btn btn-primary">Cập nhật</button>*@
+                     <button type="submit" name="submitButton" value="Update" class="btn btn-primary">Update</button>
+                    <button type="submit" name="submitButton" value="Delete" class="btn btn-primary">Delete</button>
+                </td>
+
+            </tr>
+            }
+        }
+
+
+
             </tbody>
 
         </table>
+    </div>
+    <div class="row" style="display:none" id="registerForm">
+        <span class="close" id="closeButton">&times;</span>
+        <h3 style="text-align:center; margin-bottom:10px;">Thêm thiết bị hỏng</h3>
+        @using (Html.BeginForm("Add_CTHH", "Kiemke", new { ID =ViewBag.Ma}, FormMethod.Post))
+        {
+           
+            <div class="form-group">
+                <label for="thietbi">Thiết bị</label>
+                <select name="thietbi" class="form-control" style="margin-left:5px" required>
+                    @foreach (var product in ViewBag.ThietBi as SelectList)
+                    {
+                        <option value="@product.Value">@product.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="soluong">Số lượng hư hỏng</label>
+                <input type="number" name="soluong" class="form-control" min="1" max="2000" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="ghichu">Ghi chú</label>
+                <textarea name="ghichu"  class="form-control"></textarea>
+            </div>
+            
+            <input type="submit" value="Thêm">
+        }
+
     </div>
 </div>
 Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
@@ -81,3 +130,15 @@ Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.Page
         </a>
     }
 </div>
+
+<script>
+document.getElementById("registerButton").addEventListener("click", function () {
+        document.getElementById("registerForm").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+    });
+
+document.getElementById("closeButton").addEventListener("click", function () {
+        document.getElementById("registerForm").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    });
+</script>

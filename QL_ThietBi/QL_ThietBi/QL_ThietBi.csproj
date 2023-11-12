@@ -232,10 +232,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kiemke\KiemKe.cshtml" />
     <Content Include="Views\Kiemke\CT_DSHuHong.cshtml" />
+
+    <Content Include="Views\Kiemke\ThanhLy.cshtml" />
     <Content Include="Views\DangNhap\Login.cshtml" />
     <Content Include="Views\DangNhap\LoginNV.cshtml" />
-    <Content Include="Views\DangNhap\Index.cshtml" />
-    <Content Include="Views\DangNhap\ChangePass.cshtml" />
+
     <None Include="Views\Shared\DangNhap.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
